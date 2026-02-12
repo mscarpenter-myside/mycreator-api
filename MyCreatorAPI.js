@@ -4,7 +4,7 @@ function apiGetWorkspaces() {
   const options = {
     method: 'GET',
     headers: {
-      'X-API-Key': CONFIG.MY_CREATOR_API_KEY,
+      'X-API-Key': getApiKey(),
       'Content-Type': 'application/json'
     },
     muteHttpExceptions: true // Impede que o script pare se der erro 400/500
@@ -34,7 +34,7 @@ function apiGetAccounts(workspaceId) {
   const endpoint = `${CONFIG.MY_CREATOR_BASE_URL}/workspaces/${workspaceId}/accounts`;
   const options = {
     method: 'GET',
-    headers: { 'X-API-Key': CONFIG.MY_CREATOR_API_KEY },
+    headers: { 'X-API-Key': getApiKey() },
     muteHttpExceptions: true
   };
 
@@ -54,7 +54,7 @@ function apiCreatePost(workspaceId, payload) {
   const options = {
     method: 'POST',
     headers: {
-      'X-API-Key': CONFIG.MY_CREATOR_API_KEY,
+      'X-API-Key': getApiKey(),
       'Content-Type': 'application/json'
     },
     payload: JSON.stringify(payload), // Converte o Objeto JS para texto JSON

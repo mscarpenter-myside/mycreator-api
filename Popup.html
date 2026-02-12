@@ -3,62 +3,152 @@
 
 <head>
     <base target="_top">
+    <!-- Fonte Inter (Design System) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f9;
-            color: #3c4043;
+        /* Design System MySide */
+        :root {
+            --primary: #FB414D;
+            /* Coral Red */
+            --primary-hover: #D93641;
+            --secondary: #FFAD1C;
+            /* Yellow Orange */
+            --heading: #19212D;
+            /* Dark Navy */
+            --body: #474D57;
+            /* Cool Gray */
+            --background: #F8F8F9;
+            /* Off-White */
+            --surface: #FFFFFF;
+            /* White */
+            --border: #ECEDEF;
+            /* Light Gray */
+            --success-bg: #E3F9E5;
+            /* Light Green */
+            --success-text: #0F5132;
+            --info-bg: #F0F2F5;
+            /* Light Gray for Info */
+            --info-text: #474D57;
         }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--body);
+            font-size: 14px;
+        }
+
+        /* HEADER */
         .header {
-            background: #fff;
-            padding: 15px 20px;
-            border-bottom: 1px solid #dadce0;
+            background: var(--surface);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         h2 {
             margin: 0;
-            font-size: 18px;
-            color: #1a73e8;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--heading);
         }
 
+        .select-all-label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: var(--heading);
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        /* FILTROS DE REDE */
+        .network-filters {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            /* Scrollbar space */
+        }
+
+        .filter-chip {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--body);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .filter-chip:hover {
+            background: #E8EAED;
+        }
+
+        .filter-chip.active {
+            background: #E8F0FE;
+            color: #1a73e8;
+            /* Blue for selection state */
+            border-color: #1a73e8;
+        }
+
+        /* CONTAINER */
         .container {
-            padding: 15px;
+            padding: 20px;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 16px;
+            padding-bottom: 120px;
+            /* Increased to avoid cut-off */
         }
 
-        /* Estilo dos 10 Blocos (Workspaces) */
+        /* CARDS */
         .workspace-card {
-            background: #fff;
-            border: 1px solid #dadce0;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 8px;
-            box-shadow: 0 1px 2px rgba(60, 64, 67, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
 
         .workspace-header {
-            background: #f8f9fa;
-            padding: 8px 12px;
-            font-weight: bold;
-            font-size: 13px;
-            border-bottom: 1px solid #dadce0;
-            color: #5f6368;
+            background: var(--background);
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--body);
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .account-list {
+            padding: 0;
         }
 
         .account-item {
             display: flex;
             align-items: center;
-            padding: 8px 12px;
-            border-bottom: 1px solid #f1f3f4;
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
             cursor: pointer;
-            font-size: 14px;
+            transition: background 0.1s;
         }
 
         .account-item:last-child {
@@ -66,47 +156,182 @@
         }
 
         .account-item:hover {
-            background-color: #f1f8fe;
+            background-color: #F1F4F9;
         }
 
         input[type="checkbox"] {
             margin-right: 12px;
-            transform: scale(1.2);
-            accent-color: #1a73e8;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+            cursor: pointer;
         }
 
-        .footer {
-            position: sticky;
-            bottom: 0;
-            background: #fff;
-            padding: 15px;
-            border-top: 1px solid #dadce0;
+        /* TIPO DE POST SECTION */
+        .tipo-post-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .tipo-post-section h3 {
+            margin: 0 0 16px 0;
+            font-size: 15px;
+            color: var(--heading);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tipo-option {
+            margin-bottom: 20px;
+        }
+
+        .tipo-option label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--heading);
+        }
+
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--heading);
+            background-color: var(--surface);
+            transition: border-color 0.2s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        select:disabled {
+            background: var(--background);
+            color: #9AA0A6;
+            cursor: not-allowed;
+        }
+
+        .combo-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .combo-helper-text {
+            font-size: 12px;
+            color: var(--body);
+            margin-top: 6px;
             display: flex;
-            justify-content: flex-end;
-            gap: 10px;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* INFO BOX */
+        .info-box {
+            margin-top: 20px;
+            padding: 12px 16px;
+            background: #F8F9FA;
+            /* Neutral light gray */
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 13px;
+            color: var(--body);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-title {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--heading);
+        }
+
+        /* FOOTER */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--background);
+            /* Off-white to distinguish from white card */
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 200;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+            /* Stronger shadow */
+        }
+
+        .footer-info {
+            font-weight: 600;
+            color: var(--heading);
+            font-size: 13px;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 12px;
         }
 
         button {
-            padding: 8px 20px;
-            border-radius: 4px;
+            padding: 10px 24px;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.2s;
         }
 
         .btn-save {
-            background: #1a73e8;
+            background: var(--primary);
             color: white;
+            box-shadow: 0 4px 6px rgba(251, 65, 77, 0.2);
         }
 
         .btn-save:hover {
-            background: #1557b0;
+            background: var(--primary-hover);
+            transform: translateY(-1px);
         }
 
         .btn-cancel {
-            background: #fff;
-            border: 1px solid #dadce0;
-            color: #5f6368;
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--body);
+        }
+
+        .btn-cancel:hover {
+            background: #F1F4F9;
+            color: var(--heading);
         }
     </style>
 </head>
@@ -114,41 +339,113 @@
 <body>
 
     <div class="header">
-        <h2>Seletor Inteligente MyCreator</h2>
+        <div class="header-top">
+            <h2>Seletor Inteligente</h2>
+            <label class="select-all-label">
+                <input type="checkbox" id="selectAll"> Selecionar tudo
+            </label>
+        </div>
+
+        <!-- Novos Filtros de Rede -->
+        <div class="network-filters">
+            <div class="filter-chip" onclick="toggleNetwork('Instagram')">Instagram</div>
+            <div class="filter-chip" onclick="toggleNetwork('Facebook')">Facebook</div>
+            <div class="filter-chip" onclick="toggleNetwork('LinkedIn')">LinkedIn</div>
+        </div>
     </div>
 
     <div class="container" id="main-content">
-        <p style="text-align:center;">Carregando seus Workspaces...</p>
+        <div style="text-align:center; padding: 40px; color: var(--body)">
+            Carregando seus Workspaces...
+        </div>
+    </div>
+
+    <!-- SEÇÃO TIPO DE POST -->
+    <div class="tipo-post-section">
+        <h3>2️⃣ Tipo de Post</h3>
+
+        <!-- Dropdown Principal -->
+        <div class="tipo-option">
+            <label for="tipoManualSelect">Formato Principal:</label>
+            <select id="tipoManualSelect">
+                <option value="">Selecione contas primeiro...</option>
+            </select>
+        </div>
+
+        <!-- Dropdown Combos (Condicional) -->
+        <div class="tipo-option combo-container" id="divCombos" style="display:none;">
+            <label for="tipoComboSelect" style="color:var(--primary)">Opções Conjuntas (Instragram/Facebook):</label>
+            <select id="tipoComboSelect">
+                <option value="">(Nenhum - Usar formato principal)</option>
+            </select>
+            <div class="combo-helper-text">
+                💡 Ao selecionar uma opção conjunta, o formato principal será ignorado.
+            </div>
+        </div>
+
+        <!-- Info Box Restaurado -->
+        <div class="info-box" id="infoBox">
+            <div class="info-title">ℹ️ Informações da Seleção</div>
+            <span id="infoTexto">Nenhuma conta selecionada.</span>
+        </div>
     </div>
 
     <div class="footer">
-        <button class="btn-cancel" onclick="google.script.host.close()">Cancelar</button>
-        <button class="btn-save" onclick="salvar()">Salvar na Planilha</button>
+        <div class="footer-info">
+            <span id="contadorContas">0 contas selecionadas</span>
+        </div>
+        <div class="footer-buttons">
+            <button class="btn-cancel" onclick="google.script.host.close()">Cancelar</button>
+            <button class="btn-save" onclick="salvar()">Salvar</button>
+        </div>
     </div>
 
     <script>
-        // Carrega dados ao abrir
+        // --- CONFIGURAÇÃO ---
+        const COMPATIBILIDADE_TIPO_PLATAFORMA = {
+            'feed': ['Instagram', 'Facebook', 'LinkedIn', 'Pinterest', 'Google My Business'],
+            'carousel': ['Instagram', 'LinkedIn', 'TikTok'],
+            'video': ['TikTok', 'YouTube'],
+            'story': ['Instagram', 'Facebook'],
+            'reel': ['Instagram', 'Facebook'],
+            'feed+reel': ['Instagram', 'Facebook'],
+            'feed+story': ['Instagram', 'Facebook'],
+            'feed+reel+story': ['Instagram', 'Facebook'],
+            'reel+story': ['Instagram', 'Facebook'],
+            'carousel+story': ['Instagram']
+        };
+
+        const TIPOS_COMBOS = [
+            'feed+reel', 'feed+story', 'feed+reel+story', 'reel+story', 'carousel+story'
+        ];
+
+        // --- INICIALIZAÇÃO ---
         google.script.run.withSuccessHandler(desenharInterface).getDadosParaPopup();
 
+        // --- FUNÇÕES DE UI ---
         function desenharInterface(dados) {
             const container = document.getElementById('main-content');
-            container.innerHTML = ''; // Limpa o carregando
+            container.innerHTML = '';
 
             const estrutura = dados.estrutura;
             const selecionados = dados.selecionados;
 
-            // Itera sobre cada Workspace para criar os blocos
             for (const workspace in estrutura) {
-                const infoWorkspace = estrutura[workspace]; // Pega o objeto {infoWorkspace.perfis}
+                const infoWorkspace = estrutura[workspace];
+
+                // Card do Workspace
                 const card = document.createElement('div');
                 card.className = 'workspace-card';
 
+                // Header do Workspace
                 const header = document.createElement('div');
                 header.className = 'workspace-header';
-                header.textContent = infoWorkspace.nome; // AQUI: Usa o nome da coluna A
+                header.textContent = infoWorkspace.nome;
                 card.appendChild(header);
 
+                // Lista de Contas
                 const list = document.createElement('div');
+                list.className = 'account-list'; // Classe nova para CSS limpo
 
                 infoWorkspace.perfis.forEach(conta => {
                     const label = document.createElement('label');
@@ -156,10 +453,21 @@
 
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
+                    checkbox.name = 'accountCheckbox'; // Nome para fácil seleção
                     checkbox.value = conta;
+                    // Adiciona data attribute para filtro de rede
+                    const plat = detectarPlataformaUnica(conta);
+                    if (plat) checkbox.dataset.plataforma = plat;
+
                     if (selecionados.includes(conta)) checkbox.checked = true;
 
-                    // Limpa o nome para não repetir o Workspace no texto
+                    // Listener individual
+                    checkbox.addEventListener('change', () => {
+                        atualizarContadorHeader(); // Valida se 'Select All' deve mudar
+                        atualizarTipoPost();
+                    });
+
+                    // Parse Nome
                     const nomeExibicao = conta.split(' - ')[1] || conta;
 
                     label.appendChild(checkbox);
@@ -170,15 +478,253 @@
                 card.appendChild(list);
                 container.appendChild(card);
             }
+
+            // Setup do Select All
+            const selectAll = document.getElementById('selectAll');
+            selectAll.addEventListener('change', function () {
+                toggleSelectAll(this.checked);
+            });
+
+            // Atualiza estado inicial
+            atualizarContadorHeader();
+            atualizarTipoPost();
         }
 
-        function salvar() {
-            const checks = document.querySelectorAll('input[type="checkbox"]:checked');
-            const selecionados = Array.from(checks).map(c => c.value);
+        function toggleSelectAll(checked) {
+            const checkboxes = document.querySelectorAll('input[name="accountCheckbox"]');
+            checkboxes.forEach(cb => {
+                cb.checked = checked;
+            });
+            atualizarTipoPost();
+        }
 
-            google.script.run.withSuccessHandler(() => {
-                google.script.host.close();
-            }).salvarSelecaoNaCelula(selecionados);
+        // Nova função de Toggle por Rede
+        function toggleNetwork(rede) {
+            const checkboxes = document.querySelectorAll('input[name="accountCheckbox"]');
+            let allChecked = true;
+
+            // Verifica estado atual dessa rede
+            // Se todas dessa rede já estão marcadas -> Desmarcar todas
+            // Se alguma não está marcada -> Marcar todas
+            const redeCheckboxes = Array.from(checkboxes).filter(cb => cb.dataset.plataforma === rede);
+
+            if (redeCheckboxes.length === 0) return; // Nenhuma conta dessa rede
+
+            const allOfNetworkChecked = redeCheckboxes.every(cb => cb.checked);
+            const newState = !allOfNetworkChecked; // Toggle
+
+            redeCheckboxes.forEach(cb => {
+                cb.checked = newState;
+            });
+
+            atualizarContadorHeader();
+            atualizarTipoPost();
+        }
+
+        function atualizarContadorHeader() {
+            const checkboxes = document.querySelectorAll('input[name="accountCheckbox"]');
+            const total = checkboxes.length;
+            const checkedCount = document.querySelectorAll('input[name="accountCheckbox"]:checked').length;
+            const selectAll = document.getElementById('selectAll');
+
+            if (checkedCount === 0) {
+                selectAll.checked = false;
+                selectAll.indeterminate = false;
+            } else if (checkedCount === total) {
+                selectAll.checked = true;
+                selectAll.indeterminate = false;
+            } else {
+                selectAll.checked = false;
+                selectAll.indeterminate = true;
+            }
+        }
+
+        // Helper para extrair plataforma de uma conta (para filtro)
+        function detectarPlataformaUnica(conta) {
+            const match = conta.match(/\(([^)]+)\)$/);
+            if (match) {
+                let p = match[1].trim();
+                p = p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
+                if (p === 'Gmb' || p === 'Googlemybusiness') p = 'Google My Business';
+                if (p === 'Youtube') p = 'YouTube';
+                if (p === 'Tiktok') p = 'TikTok';
+                if (p === 'Linkedin') p = 'LinkedIn';
+                return p;
+            }
+            return null;
+        }
+
+        // --- LÓGICA DE DETECÇÃO ---
+        function detectarPlataformas(contasSelecionadas) {
+            const plataformas = new Map(); // Mapa para contagem: Nome -> Quantidade
+
+            contasSelecionadas.forEach(conta => {
+                const p = detectarPlataformaUnica(conta);
+                if (p) {
+                    plataformas.set(p, (plataformas.get(p) || 0) + 1);
+                }
+            });
+            return plataformas;
+        }
+
+        function analisarCompatibilidade(listaPlataformas) {
+            const analise = {};
+            for (let tipo in COMPATIBILIDADE_TIPO_PLATAFORMA) {
+                const plataformasSuportadas = COMPATIBILIDADE_TIPO_PLATAFORMA[tipo];
+                // Verifica se TODAS as plataformas selecionadas suportam este tipo
+                const totalmenteCompativel = listaPlataformas.every(p => plataformasSuportadas.includes(p));
+
+                analise[tipo] = {
+                    totalmenteCompativel: totalmenteCompativel,
+                    // Parcialmente: suportada por algumas
+                    parcialmenteCompativel: !totalmenteCompativel && listaPlataformas.some(p => plataformasSuportadas.includes(p))
+                };
+            }
+            return analise;
+        }
+
+        // --- ATUALIZAÇÃO DA UI ---
+
+        function atualizarTipoPost() {
+            const checks = document.querySelectorAll('input[name="accountCheckbox"]:checked');
+            const contasSelecionadas = Array.from(checks).map(c => c.value);
+
+            // 1. Atualiza Contador no Footer
+            const contadorEl = document.getElementById('contadorContas');
+            contadorEl.textContent = `${contasSelecionadas.length} conta${contasSelecionadas.length !== 1 ? 's' : ''} selecionada${contasSelecionadas.length !== 1 ? 's' : ''}`;
+
+            if (contasSelecionadas.length === 0) {
+                renderState('empty');
+                return;
+            }
+
+            const mapaPlataformas = detectarPlataformas(contasSelecionadas);
+            const listaPlataformas = Array.from(mapaPlataformas.keys());
+            const analise = analisarCompatibilidade(listaPlataformas);
+
+            renderState('active', { mapaPlataformas, analise, listaPlataformas });
+        }
+
+        function renderState(state, data) {
+            const elManual = document.getElementById('tipoManualSelect');
+            const elCombo = document.getElementById('tipoComboSelect');
+            const divCombos = document.getElementById('divCombos');
+            const elInfo = document.getElementById('infoTexto');
+            const btnSave = document.querySelector('.btn-save');
+
+            if (state === 'empty') {
+                elInfo.textContent = 'Selecione pelo menos uma conta para ver as opções.';
+                elManual.innerHTML = '<option value="">Selecione contas primeiro...</option>';
+                elManual.disabled = true;
+                divCombos.style.display = 'none';
+                btnSave.disabled = true;
+                btnSave.style.opacity = '0.5';
+                return;
+            }
+
+            btnSave.disabled = false;
+            btnSave.style.opacity = '1';
+
+            const { mapaPlataformas, analise } = data;
+
+            // --- 1. Popular Tipos Básicos ---
+            elManual.disabled = false;
+            elManual.innerHTML = '<option value="">Selecione...</option>';
+
+            const tiposBasicos = Object.keys(analise)
+                .filter(t => !TIPOS_COMBOS.includes(t)) // Apenas básicos
+                .filter(t => analise[t].totalmenteCompativel); // 100% compatível
+
+            if (tiposBasicos.length > 0) {
+                tiposBasicos.forEach(t => {
+                    const opt = document.createElement('option');
+                    opt.value = t;
+                    opt.textContent = t;
+                    elManual.appendChild(opt);
+                });
+            } else {
+                elManual.innerHTML = '<option value="">(Sem tipos em comum)</option>';
+                elManual.disabled = true;
+            }
+
+            // --- 2. Popular Combos ---
+            const tiposCombos = Object.keys(analise)
+                .filter(t => TIPOS_COMBOS.includes(t))
+                .filter(t => analise[t].totalmenteCompativel);
+
+            if (tiposCombos.length > 0) {
+                divCombos.style.display = 'block';
+                elCombo.innerHTML = '<option value="">(Nenhum - Usar formato principal)</option>';
+                tiposCombos.forEach(t => {
+                    const opt = document.createElement('option');
+                    opt.value = t;
+                    opt.textContent = `✨ ${t}`;
+                    elCombo.appendChild(opt);
+                });
+
+                // Listener para mostrar aviso
+                elCombo.addEventListener('change', () => {
+                    const val = elCombo.value;
+                    if (val) {
+                        elInfo.innerHTML += `<br><br><span style="color:var(--secondary); font-weight:600;">⚠️ Atenção: Para "${val}", use APENAS Imagem OU Vídeo na planilha. Se misturar, dará erro.</span>`;
+                    } else {
+                        // Reseta texto original
+                        atualizarTipoPost();
+                    }
+                });
+            } else {
+                divCombos.style.display = 'none';
+                elCombo.value = "";
+            }
+
+            // --- 3. Atualizar Info Box Detalhado ---
+            // Cria string: "Instagram (2), Facebook (1)"
+            const detalhes = [];
+            mapaPlataformas.forEach((qtd, nome) => {
+                detalhes.push(`<strong>${nome}</strong> (${qtd})`);
+            });
+            elInfo.innerHTML = detalhes.join(', ');
+        }
+
+        // --- SALVAR ---
+        function salvar() {
+            const checks = document.querySelectorAll('input[name="accountCheckbox"]:checked');
+            const contasSelecionadas = Array.from(checks).map(c => c.value);
+
+            if (contasSelecionadas.length === 0) {
+                alert('Selecione pelo menos uma conta!');
+                return;
+            }
+
+            const tipoManual = document.getElementById('tipoManualSelect').value;
+            const tipoCombo = document.getElementById('tipoComboSelect').value;
+
+            // Prioridade para Combo se visível e selecionado
+            const usarCombo = document.getElementById('divCombos').style.display !== 'none' && tipoCombo;
+            const tipoFinal = usarCombo ? tipoCombo : tipoManual;
+
+            if (!tipoFinal) {
+                alert('Por favor, selecione um Tipo de Post válido para as plataformas escolhidas.');
+                return;
+            }
+
+            // Feedback visual de carregamento
+            const btn = document.querySelector('.btn-save');
+            const originalText = btn.textContent;
+            btn.textContent = 'Salvando...';
+            btn.disabled = true;
+
+            google.script.run
+                .withSuccessHandler(() => google.script.host.close())
+                .withFailureHandler(erro => {
+                    alert('Erro: ' + erro);
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                })
+                .salvarSelecaoComTipo({
+                    contas: contasSelecionadas,
+                    tipoPost: tipoFinal
+                });
         }
     </script>
 </body>
