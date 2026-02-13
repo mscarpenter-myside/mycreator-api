@@ -2,7 +2,7 @@
 
 Sistema de automação para agendamento de posts em redes sociais via ContentStudio API, integrado ao Google Sheets.
 
-## 🆕 Versão 2.0 - Novidades
+## 🆕 Versão 2.0 - 
 
 ### Funcionalidades Adicionadas
 
