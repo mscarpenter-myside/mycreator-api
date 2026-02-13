@@ -48,4 +48,4 @@ Para agendamentos combinados (`feed+reel`), siga esta regra simples:
 
 ---
 
-*Dúvidas? Consulte o time de tecnologia.*
+*Dúvidas? Consulte o time de engenharia de conteúdo.*
