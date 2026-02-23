@@ -24,8 +24,8 @@ function abrirPopupContas() {
 
 function getDadosParaPopup() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheetConfigs = ss.getSheetByName('CONFIGS');
-  const sheetInterface = ss.getSheetByName('INTERFACE');
+  const sheetConfigs = ss.getSheetByName('organizacao_contas');
+  const sheetInterface = ss.getSheetByName('agendamentos');
 
   // Pegamos o range completo até a coluna E
   const rangeConfigs = sheetConfigs.getRange("A2:E" + sheetConfigs.getLastRow()).getValues();
@@ -76,7 +76,7 @@ function getDadosParaPopup() {
  */
 function salvarSelecaoNaCelula(listaContas) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName('INTERFACE');
+  const sheet = ss.getSheetByName('agendamentos');
   const cell = sheet.getActiveCell();
 
   // 1. Sua lógica de escrita na célula (não alterada)

@@ -2,9 +2,9 @@ const CONFIG = {
   MY_CREATOR_BASE_URL: 'https://api.contentstudio.io/api/v1',
 
   // Configurações das Abas
-  SHEET_INTERFACE: 'INTERFACE',
-  SHEET_CONFIGS: 'CONFIGS',
-  SHEET_STAGING: 'STAGING',
+  SHEET_INTERFACE: 'agendamentos',
+  SHEET_CONFIGS: 'organizacao_contas',
+  SHEET_STAGING: 'validacao',
 
   // Mapeamento das Colunas (Aba Interface)
   COLUNA_STATUS: 1,

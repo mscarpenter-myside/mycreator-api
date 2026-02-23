@@ -210,7 +210,7 @@ function gerarStaging() {
   sheetStaging.insertRowBefore(2);
   sheetStaging.getRange('A2:D2').setValues([[new Date(), outputFinal, `Tipo: ${tipoPostCompleto || '(vazio)'}`, `WS IDs: ${Object.keys(dadosPorWorkspace).join(', ')}`]]);
   sheetStaging.activate();
-  SpreadsheetApp.getActiveSpreadsheet().toast('JSON Gerado com sucesso! ✅', 'Staging');
+  SpreadsheetApp.getActiveSpreadsheet().toast('JSON Gerado com sucesso! ✅', 'validacao');
 }
 
 function enviarAgendamento() {
